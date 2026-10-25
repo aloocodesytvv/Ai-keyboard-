@@ -1,0 +1,18 @@
+workflows:
+  android-workflow:
+    name: Android Build Workflow
+    instance_type: mac_mini_m1
+    max_build_duration: 60
+    environment:
+      vars:
+        JAVA_HOME: /Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
+        ANDROID_HOME: /usr/local/share/android-sdk
+    scripts:
+      - name: Generate Tools and Build APK
+        script: |
+          gradle wrapper --gradle-version 8.2
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon --no-build-cache
+    artifacts:
+      - app/build/outputs/apk/**/*.apk
+      
