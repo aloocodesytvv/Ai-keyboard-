@@ -8,12 +8,10 @@ workflows:
         JAVA_HOME: /Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
         ANDROID_HOME: /usr/local/share/android-sdk
     scripts:
-      - name: Force Compatible Build Tools
-        script: |
-          gradle wrapper --gradle-version 8.2
       - name: Build Android APK
         script: |
-          ./gradlew assembleDebug
+          chmod +x gradlew || true
+          ./gradlew assembleDebug --no-daemon --no-build-cache --stacktrace
     artifacts:
       - app/build/outputs/apk/**/*.apk
       
