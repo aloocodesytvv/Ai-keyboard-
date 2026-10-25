@@ -9,11 +9,9 @@ workflows:
       vars:
         ANDROID_HOME: /usr/local/share/android-sdk
     scripts:
-      - name: Set up build tools
-        script: |
-          chmod +x gradlew || true
       - name: Build Android APK
         script: |
-          ./gradlew assembleDebug
+          gradle assembleDebug
     artifacts:
       - app/build/outputs/apk/**/*.apk
+      
