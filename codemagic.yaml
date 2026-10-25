@@ -4,14 +4,16 @@ workflows:
     instance_type: mac_mini_m1
     max_build_duration: 60
     environment:
-      groups:
-        - credentials
       vars:
+        JAVA_HOME: /Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
         ANDROID_HOME: /usr/local/share/android-sdk
     scripts:
+      - name: Force Compatible Build Tools
+        script: |
+          gradle wrapper --gradle-version 8.2
       - name: Build Android APK
         script: |
-          gradle assembleDebug
+          ./gradlew assembleDebug
     artifacts:
       - app/build/outputs/apk/**/*.apk
       
