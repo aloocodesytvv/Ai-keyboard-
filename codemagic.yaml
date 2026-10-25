@@ -8,10 +8,13 @@ workflows:
         JAVA_HOME: /Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
         ANDROID_HOME: /usr/local/share/android-sdk
     scripts:
+      - name: Generate Missing Build Tools
+        script: |
+          gradle wrapper --gradle-version 8.2
+          chmod +x gradlew
       - name: Build Android APK
         script: |
-          chmod +x gradlew || true
-          ./gradlew assembleDebug --no-daemon --no-build-cache --stacktrace
+          ./gradlew assembleDebug --no-daemon --no-build-cache
     artifacts:
       - app/build/outputs/apk/**/*.apk
       
