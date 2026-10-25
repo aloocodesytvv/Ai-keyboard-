@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">RizzBoard</string>
+    <string name="keyboard_service_name">RizzBoard AI Keyboard</string>
+    <string name="subtype_en_us">English (US)</string>
+</resources>

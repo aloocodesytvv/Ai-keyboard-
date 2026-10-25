@@ -1,0 +1,6 @@
+{
+  "name": "RizzBoard",
+  "description": "Production-grade native AI keyboard (IME) featuring QWERTY layout, tone transformations (Smooth, Witty, Chill, Victorian, Gen Z, Fix Grammar), and Paste & Rizz context replies.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,19 @@
+workflows:
+  android-workflow:
+    name: Android Build Workflow
+    instance_type: mac_mini_m1
+    max_build_duration: 60
+    environment:
+      groups:
+        - credentials
+      vars:
+        ANDROID_HOME: /usr/local/share/android-sdk
+    scripts:
+      - name: Set up build tools
+        script: |
+          chmod +x gradlew || true
+      - name: Build Android APK
+        script: |
+          ./gradlew assembleDebug
+    artifacts:
+      - app/build/outputs/apk/**/*.apk
